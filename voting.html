@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voting Form</title>
+    <script>
+        function checkEligibility() {
+            var name = document.getElementById("name").value;
+            var age = document.getElementById("age").value;
+            var nationality = document.getElementById("nationality").value.toLowerCase();
+            var message = "";
+
+            if (age >= 18 && nationality === "india") {
+                message = "Hello " + name + ", you are eligible to vote.";
+            } else {
+                message = "Hello " + name + ", you are not eligible to vote.";
+            }
+
+            document.getElementById("result").innerText = message;
+        }
+    </script>
+</head>
+<body>
+    <h1>Voting Eligibility Form</h1>
+    <form onsubmit="event.preventDefault(); checkEligibility();">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required><br><br>
+        
+        <label for="age">Age:</label>
+        <input type="number" id="age" name="age" required><br><br>
+        
+        <label for="nationality">Nationality:</label>
+        <input type="text" id="nationality" name="nationality" required><br><br>
+        
+        <input type="submit" value="Check Eligibility">
+    </form>
+    <p id="result"></p>
+</body>
+</html>
